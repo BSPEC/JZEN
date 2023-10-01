@@ -1,0 +1,71 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "version": "0.0.1",
+    "type": "object",
+    "additionalProperties": false,
+    "definitions": {},
+    "properties": {
+        "FunctionOrProcedure": {
+            "type": "object",
+            "additionalProperties": false,
+            "description": "Represents a function or procedure in the programming language.",
+            "properties": {
+                "FunctionType": {
+                    "type": "string",
+                    "enum": [
+                        "Function",
+                        "Method",
+                        "Procedure"
+                    ],
+                    "description": "Specifies whether it is a function or a procedure."
+                },
+                "Name": {
+                    "type": "string",
+                    "description": "The name of the function or procedure."
+                },
+                "Parameters": {
+                    "type": "array",
+                    "additionalProperties": false,
+                    "description": "The parameters required by the function or procedure.",
+                    "items": {
+                        "$ref": "variable.json"
+                    }
+                },
+                "VariablesUsed": {
+                    "type": "array",
+                    "additionalProperties": false,
+                    "description": "Optional field for specifying variables used in the loop.",
+                    "items": {
+                        "$ref": "variable.json"
+                    }
+                },
+                "FunctionOrProcedureLogic": {
+                    "type": "array",
+                    "additionalProperties": false,
+                    "description": "Optional field for specifying variables used in the loop.",
+                    "items": {
+                        "$ref": "order_of_events.json"
+                    }
+                },
+                "ReturnType": {
+                    "$ref": "data_type.json",
+                    "additionalProperties": false,
+                    "description": "The return type of the function. Optional for procedures."
+                },
+                "NestedFunctions": {
+                    "type": "array",
+                    "additionalProperties": false,
+                    "description": "Optional field for specifying nested functions or procedures.",
+                    "items": {
+                        "$ref": "#/properties/FunctionOrProcedure"
+                    }
+                }
+            },
+            "required": [
+                "FunctionType",
+                "FunctionOrProcedureLogic",
+                "Name"
+            ]
+        }
+    }
+}

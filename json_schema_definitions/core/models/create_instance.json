@@ -1,0 +1,38 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "version": "0.0.1",
+    "type": "object",
+    "additionalProperties": false,
+    "definitions": {},
+    "properties": {
+        "CreateInstance": {
+            "type": "object",
+            "additionalProperties": false,
+            "description": "Represents the action of creating an instance in a programming language.",
+            "properties": {
+                "Class": {
+                    "$ref": "class.json",
+                    "additionalProperties": false,
+                    "description": "The the class for which an instance is being created."
+                },
+                "ConstructorParameters": {
+                    "type": "array",
+                    "additionalProperties": false,
+                    "description": "An array of parameters to pass to the constructor. Optional if the constructor does not require parameters.",
+                    "items": {
+                        "$ref": "variable.json"
+                    }
+                },
+                "InstanceVariable": {
+                    "$ref": "variable.json",
+                    "additionalProperties": false,
+                    "description": "The variable where the new instance will be stored."
+                }
+            },
+            "required": [
+                "Class",
+                "InstanceVariable"
+            ]
+        }
+    }
+}

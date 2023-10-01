@@ -1,0 +1,113 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "version": "0.0.1",
+    "type": "object",
+    "additionalProperties": false,
+    "definitions": {},
+    "properties": {
+        "Condition": {
+            "type": "object",
+            "additionalProperties": false,
+            "description": "Represents a condition being evaluated in a statement.",
+            "properties": {
+                "Variable": {
+                    "$ref": "variable.json",
+                    "additionalProperties": false,
+                    "description": "The variable involved in the condition."
+                },
+                "FunctionOrOperationValue": {
+                    "type": "object",
+                    "description": "The function or conditional operation being applied.",
+                    "additionalProperties": false,
+                    "properties": {
+                        "Conditional": {
+                            "type": "string",
+                            "enum": [
+                                "is_null",
+                                "is_between",
+                                "is_greater_than",
+                                "is_greater_than_or_equal_to",
+                                "is_equal_to",
+                                "is_less_than",
+                                "is_less_than_or_equal_to",
+                                "is_contained_in",
+                                "has_pattern"
+                            ],
+                            "description": "A conditional operation value as an argument."
+                        },
+                        "FunctionCall": {
+                            "$ref": "function_call.json",
+                            "additionalProperties": false,
+                            "description": "A nested function call as an argument."
+                        },
+                        "Operation": {
+                            "$ref": "perform_operation.json",
+                            "additionalProperties": false,
+                            "description": "An operation as an argument."
+                        }
+                    },
+                    "oneOf": [
+                        {
+                            "required": [
+                                "Conditional"
+                            ]
+                        },
+                        {
+                            "required": [
+                                "FunctionCall"
+                            ]
+                        },
+                        {
+                            "required": [
+                                "Operation"
+                            ]
+                        }
+                    ]
+                },
+                "Fact": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "description": "The fact or value to compare or pass in.",
+                    "properties": {
+                        "Literal": {
+                            "type": "string",
+                            "description": "A literal value as an argument."
+                        },
+                        "Variable": {
+                            "$ref": "variable.json",
+                            "additionalProperties": false,
+                            "description": "The variable involved as an argument."
+                        },
+                        "FunctionCall": {
+                            "$ref": "function_call.json",
+                            "additionalProperties": false,
+                            "description": "A nested function call as an argument."
+                        }
+                    },
+                    "oneOf": [
+                        {
+                            "required": [
+                                "Literal"
+                            ]
+                        },
+                        {
+                            "required": [
+                                "Variable"
+                            ]
+                        },
+                        {
+                            "required": [
+                                "FunctionCall"
+                            ]
+                        }
+                    ]
+                }
+            },
+            "required": [
+                "Variable",
+                "FunctionOrOperationValue",
+                "Fact"
+            ]
+        }
+    }
+}

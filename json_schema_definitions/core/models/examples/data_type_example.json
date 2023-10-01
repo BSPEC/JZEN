@@ -1,0 +1,16 @@
+{
+    "DataType": {
+        "TypeCategory": "CompositeType",
+        "TypeName": "Person",
+        "NestedTypes": [
+            {
+                "TypeCategory": "PrimitiveType",
+                "TypeName": "string"
+            },
+            {
+                "TypeCategory": "PrimitiveType",
+                "TypeName": "int"
+            }
+        ]
+    }
+}

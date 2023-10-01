@@ -1,0 +1,72 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "version": "0.0.1",
+    "type": "object",
+    "additionalProperties": false,
+    "definitions": {},
+    "properties": {
+        "FunctionCall": {
+            "type": "object",
+            "additionalProperties": false,
+            "description": "Represents the action of calling a function or procedure in a programming language.",
+            "properties": {
+                "FunctionName": {
+                    "type": "string",
+                    "description": "The name of the function or procedure being called."
+                },
+                "Arguments": {
+                    "type": "array",
+                    "additionalProperties": false,
+                    "description": "The arguments passed to the function or procedure.",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                            "Literal": {
+                                "type": "string",
+                                "description": "A literal value as an argument."
+                            },
+                            "Variable": {
+                                "$ref": "variable.json",
+                                "description": "A variable as an argument."
+                            },
+                            "FunctionCall": {
+                                "$ref": "#",
+                                "description": "A nested function call as an argument."
+                            },
+                            "Operation": {
+                                "$ref": "perform_operation.json",
+                                "description": "An operation as an argument."
+                            }
+                        },
+                        "oneOf": [
+                            {
+                                "required": [
+                                    "Literal"
+                                ]
+                            },
+                            {
+                                "required": [
+                                    "Variable"
+                                ]
+                            },
+                            {
+                                "required": [
+                                    "FunctionCall"
+                                ]
+                            },
+                            {
+                                "required": [
+                                    "Operation"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            },
+            "required": [
+                "FunctionName"
+            ]
+        }
+    }
+}

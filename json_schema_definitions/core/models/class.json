@@ -1,0 +1,65 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "version": "0.0.1",
+    "type": "object",
+    "additionalProperties": false,
+    "definitions": {},
+    "properties": {
+        "Class": {
+            "type": "object",
+            "additionalProperties": false,
+            "description": "Represents the definition of a class in a programming language.",
+            "properties": {
+                "ClassName": {
+                    "type": "string",
+                    "description": "The name of the class."
+                },
+                "AccessModifier": {
+                    "type": "string",
+                    "enum": [
+                        "Public",
+                        "Private",
+                        "Protected",
+                        "Internal"
+                    ],
+                    "description": "Optional. The access level of the class."
+                },
+                "Inheritance": {
+                    "type": "array",
+                    "additionalProperties": false,
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Optional. List of classes or interfaces that this class inherits from."
+                },
+                "Properties": {
+                    "type": "array",
+                    "additionalProperties": false,
+                    "items": {
+                        "$ref": "variable.json"
+                    },
+                    "description": "Optional. List of properties (variables) in the class."
+                },
+                "Methods": {
+                    "type": "array",
+                    "additionalProperties": false,
+                    "items": {
+                        "$ref": "function_or_procedure.json"
+                    },
+                    "description": "Optional. List of methods (functions or procedures) in the class."
+                },
+                "NestedClasses": {
+                    "type": "array",
+                    "additionalProperties": false,
+                    "items": {
+                        "$ref": "#"
+                    },
+                    "description": "Optional. List of nested classes within this class."
+                }
+            },
+            "required": [
+                "ClassName"
+            ]
+        }
+    }
+}

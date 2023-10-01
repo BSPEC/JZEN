@@ -1,0 +1,42 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "version": "0.0.1",
+    "type": "object",
+    "additionalProperties": false,
+    "definitions": {},
+    "properties": {
+        "Variable": {
+            "type": "object",
+            "additionalProperties": false,
+            "description": "Represents a variable or constant in the programming language.",
+            "properties": {
+                "VariableType": {
+                    "type": "string",
+                    "description": "Specifies whether the item is a variable or constant.",
+                    "enum": [
+                        "Variable",
+                        "Constant"
+                    ]
+                },
+                "Name": {
+                    "type": "string",
+                    "description": "The name of the variable or constant."
+                },
+                "DataType": {
+                    "$ref": "data_type.json",
+                    "additionalProperties": false,
+                    "description": "The data type of the variable or constant."
+                },
+                "DefaultValue": {
+                    "type": "string",
+                    "description": "Optional default value for the variable or constant."
+                }
+            },
+            "required": [
+                "VariableType",
+                "Name",
+                "DataType"
+            ]
+        }
+    }
+}

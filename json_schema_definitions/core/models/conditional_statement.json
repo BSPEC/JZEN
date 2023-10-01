@@ -1,0 +1,45 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "version": "0.0.1",
+    "type": "object",
+    "additionalProperties": false,
+    "definitions": {},
+    "properties": {
+        "ConditionalStatement": {
+            "type": "object",
+            "additionalProperties": false,
+            "description": "Represents a conditional statement in the programming language.",
+            "properties": {
+                "StatementType": {
+                    "type": "string",
+                    "description": "Specifies the type of the conditional statement.",
+                    "enum": [
+                        "if",
+                        "else if",
+                        "else",
+                        "switch"
+                    ]
+                },
+                "Condition": {
+                    "type": "array",
+                    "additionalProperties": false,
+                    "description": "The conditions being evaluated in the statement. Optional for 'else' statements.",
+                    "items": {
+                        "$ref": "condition.json"
+                    }
+                },
+                "NestedStatements": {
+                    "type": "array",
+                    "additionalProperties": false,
+                    "description": "Optional field for specifying nested conditional statements.",
+                    "items": {
+                        "$ref": "#/properties/ConditionalStatement"
+                    }
+                }
+            },
+            "required": [
+                "StatementType"
+            ]
+        }
+    }
+}

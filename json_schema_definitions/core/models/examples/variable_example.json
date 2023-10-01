@@ -1,0 +1,11 @@
+{
+    "Variable": {
+        "VariableType": "Variable",
+        "Name": "username",
+        "DataType": {
+            "TypeCategory": "PrimitiveType",
+            "TypeName": "string"
+        },
+        "DefaultValue": "guest"
+    }
+}

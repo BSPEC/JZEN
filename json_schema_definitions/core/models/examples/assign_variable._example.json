@@ -1,0 +1,15 @@
+{
+    "AssignVariable": {
+        "Variable": {
+            "VariableType": "Variable",
+            "Name": "x",
+            "DataType": {
+                "TypeCategory": "PrimitiveType",
+                "TypeName": "int"
+            }
+        },
+        "Value": {
+            "Literal": "42"
+        }
+    }
+}
