@@ -1,0 +1,95 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "version": "0.0.1",
+    "type": "object",
+    "additionalProperties": false,
+    "definitions": {},
+    "properties": {
+        "PerformOperation": {
+            "type": "object",
+            "additionalProperties": false,
+            "description": "Represents the action of performing an operation in a programming language.",
+            "properties": {
+                "Operands": {
+                    "type": "array",
+                    "additionalProperties": false,
+                    "description": "The operands involved in the operation.",
+                    "minItems": 2,
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                            "OperationType": {
+                                "type": "string",
+                                "description": "Optional. Specifies the type of operation to perform.",
+                                "enum": [
+                                    "Addition",
+                                    "Subtraction",
+                                    "Multiplication",
+                                    "Division",
+                                    "Concatenation",
+                                    "Custom"
+                                ]
+                            },
+                            "Operation": {
+                                "Literal": {
+                                    "type": "string",
+                                    "description": "A literal value as an operand."
+                                },
+                                "Variable": {
+                                    "$ref": "variable.json",
+                                    "additionalProperties": false,
+                                    "description": "A variable as an operand."
+                                },
+                                "FunctionCall": {
+                                    "$ref": "function_call.json",
+                                    "additionalProperties": false,
+                                    "description": "A function call as an operand."
+                                },
+                                "NestedOperands": {
+                                    "type": "array",
+                                    "additionalProperties": false,
+                                    "description": "Optional. Nested operands for complex operations.",
+                                    "items": {
+                                        "$ref": "#/properties/Operands/items"
+                                    }
+                                },
+                                "oneOf": [
+                                    {
+                                        "required": [
+                                            "Literal"
+                                        ]
+                                    },
+                                    {
+                                        "required": [
+                                            "Variable"
+                                        ]
+                                    },
+                                    {
+                                        "required": [
+                                            "FunctionCall"
+                                        ]
+                                    },
+                                    {
+                                        "required": [
+                                            "NestedOperands"
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "ResultVariable": {
+                    "$ref": "variable.json",
+                    "additionalProperties": false,
+                    "description": "The variable where the result of the operation will be stored."
+                }
+            },
+            "required": [
+                "Operands",
+                "ResultVariable"
+            ]
+        }
+    }
+}

@@ -1,0 +1,74 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "version": "0.0.1",
+    "type": "object",
+    "additionalProperties": false,
+    "definitions": {},
+    "properties": {
+        "OrderOfEvents": {
+            "type": "array",
+            "additionalProperties": false,
+            "description": "The sequence of actions or events in the function or procedure.",
+            "items": {
+                "Event": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "CreateInstance": {
+                            "$ref": "create_instance.json",
+                            "additionalProperties": false,
+                            "description": "Represents the action of creating an instance in a programming language."
+                        },
+                        "AssignVariable": {
+                            "$ref": "assign_variable.json",
+                            "additionalProperties": false,
+                            "description": "Represents the action of assigning a value to a variable in a programming language."
+                        },
+                        "PerformOperation": {
+                            "$ref": "perform_operation.json",
+                            "additionalProperties": false,
+                            "description": "A function call whose return value will be assigned."
+                        },
+                        "ConditionalStatement": {
+                            "$ref": "conditional_statement.json",
+                            "additionalProperties": false,
+                            "description": "A function call whose return value will be assigned."
+                        },
+                        "Loop": {
+                            "$ref": "loop.json",
+                            "additionalProperties": false,
+                            "description": "Represents a loop structure in the programming language."
+                        }
+                    },
+                    "oneOf": [
+                        {
+                            "required": [
+                                "CreateInstance"
+                            ]
+                        },
+                        {
+                            "required": [
+                                "AssignVariable"
+                            ]
+                        },
+                        {
+                            "required": [
+                                "PerformOperation"
+                            ]
+                        },
+                        {
+                            "required": [
+                                "ConditionalStatement"
+                            ]
+                        },
+                        {
+                            "required": [
+                                "Loop"
+                            ]
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,62 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "version": "0.0.1",
+    "type": "object",
+    "additionalProperties": false,
+    "definitions": {},
+    "properties": {
+        "AssignVariable": {
+            "type": "object",
+            "additionalProperties": false,
+            "description": "Represents the action of assigning a value to a variable in a programming language.",
+            "properties": {
+                "Variable": {
+                    "$ref": "variable.json",
+                    "description": "The variable to which a value will be assigned."
+                },
+                "Value": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "description": "The value to be assigned to the variable. Can be a literal, another variable, or the result of a function call.",
+                    "properties": {
+                        "Literal": {
+                            "type": "string",
+                            "description": "A literal value to assign to the variable."
+                        },
+                        "Variable": {
+                            "$ref": "variable.json",
+                            "additionalProperties": false,
+                            "description": "Another variable whose value will be assigned."
+                        },
+                        "FunctionCall": {
+                            "$ref": "function_call.json",
+                            "additionalProperties": false,
+                            "description": "A function call whose return value will be assigned."
+                        }
+                    },
+                    "oneOf": [
+                        {
+                            "required": [
+                                "Literal"
+                            ]
+                        },
+                        {
+                            "required": [
+                                "Variable"
+                            ]
+                        },
+                        {
+                            "required": [
+                                "FunctionCall"
+                            ]
+                        }
+                    ]
+                }
+            },
+            "required": [
+                "Variable",
+                "Value"
+            ]
+        }
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "Condition": {
+        "Variable": {
+            "VariableType": "Variable",
+            "Name": "x",
+            "DataType": {
+                "TypeCategory": "PrimitiveType",
+                "TypeName": "int"
+            }
+        },
+        "FunctionOrOperationValue": {
+            "Conditional": "is_equal_to"
+        },
+        "Fact": {
+            "FunctionCall": {
+                "FunctionName": "isEven",
+                "Arguments": [
+                    {
+                        "Literal": "2"
+                    }
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,40 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "version": "0.0.1",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "DataType": {
+            "type": "object",
+            "additionalProperties": false,
+            "description": "Represents a data type in the programming language.",
+            "properties": {
+                "TypeCategory": {
+                    "type": "string",
+                    "description": "Specifies whether the data type is a primitive or composite type.",
+                    "enum": [
+                        "PrimitiveType",
+                        "CompositeType",
+                        "CustomType"
+                    ]
+                },
+                "TypeName": {
+                    "type": "string",
+                    "description": "The name of the data type."
+                },
+                "NestedTypes": {
+                    "type": "array",
+                    "additionalProperties": false,
+                    "description": "Optional field for specifying nested types, relevant for composite types like arrays.",
+                    "items": {
+                        "$ref": "#/properties/DataType"
+                    }
+                }
+            },
+            "required": [
+                "TypeCategory",
+                "TypeName"
+            ]
+        }
+    }
+}

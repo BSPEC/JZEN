@@ -1,0 +1,56 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "version": "0.0.1",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "PackageModuleManagement": {
+            "type": "object",
+            "additionalProperties": false,
+            "description": "Represents package or module management in a programming language.",
+            "properties": {
+                "Language": {
+                    "type": "string",
+                    "enum": [
+                        "C#",
+                        "Python"
+                    ],
+                    "description": "Specifies whether the package or module is internal or external."
+                },
+                "PackageType": {
+                    "type": "string",
+                    "enum": [
+                        "Internal",
+                        "External"
+                    ],
+                    "description": "Specifies whether the package or module is internal or external."
+                },
+                "PackageName": {
+                    "type": "string",
+                    "description": "The name of the package or module."
+                },
+                "Version": {
+                    "type": "string",
+                    "description": "Optional. The version of the package or module, relevant for external packages."
+                },
+                "Source": {
+                    "type": "string",
+                    "description": "Optional. The source or repository from which the package is fetched, relevant for external packages."
+                },
+                "ObjectImported": {
+                    "type": "array",
+                    "additionalProperties": false,
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Optional. List of functions or classes imported from the package or module."
+                }
+            },
+            "required": [
+                "Language",
+                "PackageType",
+                "PackageName"
+            ]
+        }
+    }
+}

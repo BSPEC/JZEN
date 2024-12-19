@@ -1,0 +1,55 @@
+{
+    "Class": {
+        "ClassName": "Person",
+        "AccessModifier": "Public",
+        "Inheritance": [
+            "Human"
+        ],
+        "Properties": [
+            {
+                "VariableType": "Variable",
+                "Name": "name",
+                "DataType": {
+                    "TypeCategory": "PrimitiveType",
+                    "TypeName": "string"
+                }
+            },
+            {
+                "VariableType": "Variable",
+                "Name": "age",
+                "DataType": {
+                    "TypeCategory": "PrimitiveType",
+                    "TypeName": "int"
+                }
+            }
+        ],
+        "Methods": [
+            {
+                "FunctionType": "Method",
+                "Name": "sayHello",
+                "Parameters": [],
+                "ReturnType": {
+                    "TypeCategory": "PrimitiveType",
+                    "TypeName": "void"
+                }
+            }
+        ],
+        "NestedClasses": [
+            {
+                "Class": {
+                    "ClassName": "Address",
+                    "Properties": [
+                        {
+                            "VariableType": "Variable",
+                            "Name": "street",
+                            "DataType": {
+                                "TypeCategory": "PrimitiveType",
+                                "TypeName": "string"
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

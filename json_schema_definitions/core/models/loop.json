@@ -1,0 +1,65 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "version": "0.0.1",
+    "type": "object",
+    "additionalProperties": false,
+    "definitions": {},
+    "properties": {
+        "Loop": {
+            "type": "object",
+            "additionalProperties": false,
+            "description": "Represents a loop structure in the programming language.",
+            "properties": {
+                "LoopType": {
+                    "type": "string",
+                    "description": "Specifies the type of the loop.",
+                    "enum": [
+                        "for",
+                        "while",
+                        "do-while"
+                    ]
+                },
+                "Initialization": {
+                    "type": "string",
+                    "description": "The initialization statement for the loop. Generally relevant for 'for' loops."
+                },
+                "Condition": {
+                    "type": "string",
+                    "description": "The condition being evaluated for loop continuation."
+                },
+                "Iteration": {
+                    "type": "string",
+                    "description": "The iteration statement for the loop. Generally relevant for 'for' loops."
+                },
+                "VariablesUsed": {
+                    "type": "array",
+                    "additionalProperties": false,
+                    "description": "Optional field for specifying variables used in the loop.",
+                    "items": {
+                        "$ref": "variable.json"
+                    }
+                },
+                "LoopLogic": {
+                    "type": "array",
+                    "additionalProperties": false,
+                    "description": "Optional field for specifying variables used in the loop.",
+                    "items": {
+                        "$ref": "order_of_events.json"
+                    }
+                },
+                "NestedLoops": {
+                    "type": "array",
+                    "additionalProperties": false,
+                    "description": "Optional field for specifying nested loops.",
+                    "items": {
+                        "$ref": "#/properties/Loop"
+                    }
+                }
+            },
+            "required": [
+                "LoopType",
+                "Condition"
+            ]
+        }
+    }
+}
